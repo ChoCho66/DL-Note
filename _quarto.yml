@@ -1,13 +1,15 @@
 project:
   type: book
+  output-dir: docs
 
 book:
   title: "DL-Note"
-  author: "Jane Doe"
+  author: "ChoCho"
   date: "2022/11/3"
   chapters:
     - index.qmd
     - intro.qmd
+    - Test.qmd
     - summary.qmd
     - references.qmd
 

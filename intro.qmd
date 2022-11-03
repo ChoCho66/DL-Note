@@ -9,5 +9,8 @@ This is a book created from markdown and executable code.
 See @knuth84 for additional discussion of literate programming.
 
 ```{python}
-1 + 1
+#| results: asis
+import lipsum
+
+lipsum.generate_words(666)
 ```

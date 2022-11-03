@@ -1,0 +1,25 @@
+---
+engine: knitr
+---
+
+# 測試
+
+```{r}
+plot(pressure)
+```
+
+```{python}
+#| results: asis
+#| echo: false
+import lipsum
+
+lipsum.generate_words(666)
+```
+
+asdasdasd 
+
+測試
+
+asdasd 測試中文
+
+asdsdipajdi pwjdi pawjdp i

@@ -8,6 +8,8 @@ This is a Quarto book.
 
 To learn more about Quarto books visit <https://quarto.org/docs/books>.
 
-```{python}
-1 + 1
-```
+
+We have $f(x) = y.$
+
+$\mathbb{E}[f(X)] =c.$
+
