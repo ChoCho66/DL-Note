@@ -10,7 +10,27 @@ See @knuth84 for additional discussion of literate programming.
 
 ```{python}
 #| results: asis
+#| echo: false
 import lipsum
 
 lipsum.generate_words(666)
 ```
+
+
+```{python}
+import time
+
+time.sleep(6)
+```
+
+`r print(1)`
+
+asdasdasd 
+
+測試
+
+asdasd 測試中文
+
+asdsdipajdi pwjdi pawjdp i
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
