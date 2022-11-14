@@ -16,20 +16,19 @@ import lipsum
 lipsum.generate_words(666)
 ```
 
-
 ```{python}
 import time
 
-time.sleep(6)
+for i in range(5):
+    print(i)
+    time.sleep(2)
 ```
 
-`r print(1)`
+$F(X) = y.$
 
-asdasdasd 
+Function
 
-測試
-
-asdasd 測試中文
+asdasdasd
 
 asdsdipajdi pwjdi pawjdp i
 
@@ -50,3 +49,9 @@ QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
 @lawler2011valuesI
 
 [@lawler2011valuesI]
+
+Let $f$ be a bounded function defined on $\mathbb{R}.$
+
+![Elephant](https://quarto.org/docs/authoring/images/crossref-figure.png){#fig-elephant}
+
+See @fig-elephant for an illustration.

@@ -1,0 +1,193 @@
+% \usepackage{booktabs}
+
+\usepackage{fontspec}
+%\usepackage{amsfonts}
+\usepackage{amsthm}
+
+%\usepackage{nicefrac} %好看的分數 專門放在指數  \nicefrac{1}{2}
+
+\usepackage{amssymb}
+% \allowdisplaybreaks[1]
+
+%\usepackage{nath}
+%\delimgrowth=1
+
+\numberwithin{equation}{section}
+
+\renewcommand{\baselinestretch}{1.2}  %字間的行距
+
+
+\usepackage{xeCJK}
+\setCJKmainfont{標楷體}
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+\defaultCJKfontfeatures{AutoFakeBold=6,AutoFakeSlant=.4}
+%\usepackage{lipsum}
+%\usepackage[most]{tcolorbox}
+
+%\setlength{\leftmargini}{6pt}
+
+%\newenvironment{tbox}{\begin{tcolorbox}[colback=white,enhanced jigsaw,breakable, boxrule = 0.2mm, ,left=6pt,right=6pt,top=1pt,bottom=1pt,arc = 0mm]}{\end{tcolorbox}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newlength{\zhind}
+\settowidth{\zhind}{fives}
+\AtBeginDocument{\setlength{\parindent}{\zhind}}  %每行留白距離
+
+\AtBeginDocument{\setlength{\abovedisplayskip}{10pt}}
+\AtBeginDocument{\setlength{\belowdisplayskip}{10pt}}
+
+\AtBeginDocument{\setlength{\parskip}{.6em}}  %換段落的距離
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% 課本形式的頁碼 在左右上角 
+% read https://bookdown.org/yihui/rmarkdown-cookbook/latex-header.html
+\usepackage{fancyhdr}   
+% \fancypagestyle{plain}{%
+% \fancyhf{}
+% \fancyhead[L]{\leftmark}
+\fancyhead[RE]{\nouppercase{\leftmark}}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+\fancyhead[RO,LE]{\thepage}
+\fancyfoot{}
+% }
+\renewcommand{\headrulewidth}{0pt}% Default \headrulewidth is 0.4pt
+
+
+
+%%%%% 論文形式的頁碼 
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% % center of header
+% %\fancyhead[CO,CE]{Your Document Header}
+% \fancyhead{}
+
+% % center of footer
+% %\fancyfoot[CO,CE]{\thepage}
+% \cfoot{\thepage}
+
+% % page number on the left of even pages and right of odd pages
+% %\fancyfoot[LE,RO]{\thepage}
+
+% \thispagestyle{fancy}
+
+% \renewcommand{\headrulewidth}{0pt}% Default \headrulewidth is 0.4pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\delimitershortfall -0.1em  % 調整\left \right nested的大小
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+
+
+
+
+%\usepackage{makeidx}
+%\makeindex
+\usepackage{imakeidx}
+%\usepackage[nonewpage]{imakeidx}
+%\indexsetup{level=\section*,toclevel=section,headers={Stellenregister}{\indexname}}%
+%\indexsetup{level=\section*,toclevel=section,noclearpage}
+\makeindex[name=term,title={Index of Terms}]
+\makeindex[name=notation,title={Index of Notations}]
+
+\usepackage[nottoc]{tocbibind}
+
+%\usepackage[index]{kantlipsum}
+
+
+
+
+% 要放在 \usepackage{imakeidx} 後面 
+\makeindex
+
+
+% 顯示 label !
+\usepackage[left]{showlabels}
+\renewcommand{\showlabelfont}{\ttfamily\tiny}
+
+
+%\usepackage{mathtools} % 只列出有 eqref 的equation num  在 tinytex 會出錯
+%\mathtoolsset{showonlyrefs=true}
+%\mathtoolsset{showonlyrefs,showmanualtags}
+
+%% 更改水平線長度  % footnote 會GG
+%\let\oldrule=\rule
+%\renewcommand{\rule}[1]{\oldrule{\linewidth}}
+
+\usepackage{url}  % bib url 用的
+
+
+
+%% cols
+
+\newenvironment{columns}[1][]{}{}
+
+\newenvironment{column}[1]{\begin{minipage}{#1}\ignorespaces}{%
+\end{minipage}
+\ifhmode\unskip\fi
+\aftergroup\useignorespacesandallpars}
+
+\def\useignorespacesandallpars#1\ignorespaces\fi{%
+#1\fi\ignorespacesandallpars}
+
+\makeatletter
+\def\ignorespacesandallpars{%
+  \@ifnextchar\par
+    {\expandafter\ignorespacesandallpars\@gobble}%
+    {}%
+}
+\makeatother
+
+
+
+% 聖經
+% \usepackage[left]{lineno}
+% \linenumbers
+
+
+
+% 圖片強制位置
+\usepackage{float}
+
+% subfig
+%\usepackage{subfig}
+% \usepackage[margin=10pt]{subfig}
+%\setlength{\subfigcapmargin}{5pt}
+%\captionsetup[subfigure]{width=0.9\textwidth}
+
+% 動畫
+% \usepackage{animate}
+
+
+% Do not page break for Environment
+% 這樣弄的話 環境裡面不能放圖片
+\AtBeginEnvironment{theorem}{\bigskip\begin{center}\begin{minipage}{\textwidth}}
+\AtEndEnvironment{theorem}{\end{minipage}\end{center}\bigskip}
+\AtBeginEnvironment{proposition}{\bigskip\begin{center}\begin{minipage}{\textwidth}}
+\AtEndEnvironment{proposition}{\end{minipage}\end{center}\bigskip}
+\AtBeginEnvironment{lemma}{\bigskip\begin{center}\begin{minipage}{\textwidth}}
+\AtEndEnvironment{lemma}{\end{minipage}\end{center}\bigskip}
+\AtBeginEnvironment{definition}{\bigskip\begin{center}\begin{minipage}{\textwidth}}
+\AtEndEnvironment{definition}{\end{minipage}\end{center}\bigskip}
+\AtBeginEnvironment{conjecture}{\bigskip\begin{center}\begin{minipage}{\textwidth}}
+\AtEndEnvironment{conjecture}{\end{minipage}\end{center}\bigskip}
+
+
+% pdfpages
+\usepackage{pdfpages}
+
+
+% \usepackage[style=authoryear,backend=biber]{biblatex}

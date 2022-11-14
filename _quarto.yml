@@ -5,21 +5,46 @@ project:
 book:
   title: "DL-Note"
   author: "ChoCho"
-  date: "2022/11/3"
+  date: today
+  description: |
+    Test.
   chapters:
     - index.qmd
-    - intro.qmd
-    - Test.qmd
-    - summary.qmd
+    # - intro.qmd
+    # - Test.qmd
+    # - TTTTTT.ipynb
+    # - summary.qmd
+    - appendix_py.ipynb
     - references.qmd
+  
+  page-footer:
+    left: |
+      DL-Note
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
+
+  cover-image: cover.jpg
 
 bibliography: references.bib
 
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
+    code-link: true
+    # include-in-header: "plausible.html"
+    callout-appearance: simple
 
+  pdf:
+  # See https://quarto.org/docs/reference/formats/pdf.html
+    include-in-header:
+      - preamble.tex
+    documentclass: book
+    # documentclass: scrreprt
+    papersize: a4
+    geometry: 
+      - top=2.5cm, 
+      - bottom=2.5cm, 
+      - left=2cm, 
+      - right=2cm
 
 
