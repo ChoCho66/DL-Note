@@ -11,20 +11,33 @@ lipsum = function(n){
 }
 ```
 
+中文測試 asdsad  asdas d  asd sadowk  paisdj ipwjd ipqjwdi pqjdpwj
+ asdasd jip 
+u3pasdj aspidjpsadj piasdj i
+
+⭐
+
+⭐
+
 ## Test 
 
-`r lipsum(20)`
 
 ## Equations
 
-Here is an equation.
+Here is an equation. asdasd  ajdw pijdpijwdp ijqpd jqp djpqw dq d
+sdpi ajdp iwjd japd j 
+
+Let a $f(x) = y.$
+
+
 
 
 
 $$
 \begin{aligned}
-f(x) = y.  
+  f(\mathbb{x}) &= \mathbb{y} , \cr
+  f(\mathbb{y}) &= \mathbb{z}.
 \end{aligned}
 $$
 
-:no_pedestrians:
+
