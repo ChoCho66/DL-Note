@@ -10,11 +10,11 @@ book:
     Test.
   chapters:
     - index.qmd
+    - Preliminaries.ipynb
+    # - summary.qmd
     # - intro.qmd
     # - Test.qmd
     # - Test2.qmd
-    - TTTTTT.ipynb
-    # - summary.qmd
     # - appendix_py.ipynb
     - references.qmd
     
