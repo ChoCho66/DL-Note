@@ -13,10 +13,11 @@ book:
     # - intro.qmd
     # - Test.qmd
     # - Test2.qmd
-    # - TTTTTT.ipynb
+    - TTTTTT.ipynb
     # - summary.qmd
     # - appendix_py.ipynb
     - references.qmd
+    
   
   page-footer:
     left: |

@@ -5,5 +5,4 @@ engine: knitr
 
 # Preface {.unnumbered}
 
-ABC.
-
+ABC. See [@bookdown2016].
