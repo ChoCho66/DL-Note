@@ -10,7 +10,7 @@ book:
     Test.
   chapters:
     - index.qmd
-    - Preliminaries.ipynb
+    # - Preliminaries.ipynb
     # - summary.qmd
     # - intro.qmd
     # - Test.qmd

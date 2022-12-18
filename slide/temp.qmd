@@ -1,0 +1,28 @@
+
+
+
+
+`batch_size`
+`max_epochs`
+`lr`
+`num_inputs`
+`num_outputs`
+`y_hat`
+
+## `Model`
+
+`loss` and `forward`
+
+
+
+## 3.2.3 前面
+
+You may notice that `Module` is a subclass of `nn.Module`,
+the base class of neural networks in `PyTorch`.
+It provides convenient features to handle neural networks.
+For example,
+if we define a forward method,
+such as `forward(self,X)`,
+then for an instance a we can invoke this function by `a(X)`.
+This works since it calls the forward method in the built-in `__call__` method.
+You can find more details and examples about `nn.Module` in Section 6.1.
