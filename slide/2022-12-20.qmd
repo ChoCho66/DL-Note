@@ -1,0 +1,133 @@
+---
+title: "Title TODO:"
+author: "ChoCho"
+date: last-modified
+date-format: iso
+bibliography: ../references.bib
+format:
+  revealjs:
+    # theme: beige
+    # theme: ../custom.scss
+    theme: [serif,custom.scss]    # 像 LaTeX
+    width: 1800
+    height: 1050
+    # transition: fade
+    # preview-links: auto
+    # slide-number: true
+    # slide-tone: true
+    # show-slide-number: print
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 2
+      src: "Chalkboard.json"
+    scrollable: true
+    echo: true
+    # footer: "NCU math"
+    # logo: cover.jpg
+---
+
+
+
+# TOTO
+
+1. train data ? 
+1. SOP of train 
+
+
+# Recall 12/13
+
+## AAA
+
+column0 | column1 | column2
+------- | ------- | -------
+$(\mathbf{x}^{(1)},y^{(1)}), \cdots , (\mathbf{x}^{(n)},y^{(n)})$ | data | sample
+| | 建造 model (denote estimators by $\widehat{y}^{(i)}$) | 將 $\mathbf{x}^{(i)},y^{(i)}$ 看成 random elements $\mathbf{X},Y$ 的 realizations
+$\theta$ | parameters (of model) | parameters (of density)
+|| min loss | max likelihood
+
+
+
+---
+
+### Deep learning (TODO:修改) vs Statistics
+
+- $(\mathbf{x}^{(1)},y^{(1)}), \cdots , (\mathbf{x}^{(n)},y^{(n)})$: data $\iff$ sample.
+<!-- TODO: 補 loss -->
+
+- 建造 model (denote estimators by $\widehat{y}^{(i)}$) $\iff$ 將 $\mathbf{x}^{(i)},y^{(i)}$ 看成 random elements $\mathbf{X},Y$ 的 realizations.
+
+- $\theta$: parameters (of model) $\iff$ parameters (of density).
+
+- min loss $\iff$ max likelihood.
+
+  - How to min loss:  **Gradient Descent**.
+    - <small>https://thumbs.gfycat.com/AngryInconsequentialDiplodocus-size_restricted.gif</small> ![](https://thumbs.gfycat.com/AngryInconsequentialDiplodocus-size_restricted.gif)
+
+  - Gradient Descent:
+    $$
+    \mathbf{x}_{i} \leftarrow \mathbf{x}_{i-1} - \ell \cdot \nabla f(\mathbf{x}_{i-1})
+    $$  
+
+    - $\ell$: learning rate (步長).
+      
+      - Momentum, Adam, $\cdots.$
+    
+    - 最速上升: 往梯度方向走 by 
+    $$
+    D_{v} f(\mathbf{x}) = \nabla f(\mathbf{x})\cdot v
+    $$
+    and Cauchy's inequality.
+
+
+
+## SOP
+
+1. We have data (samples)
+$$
+\begin{aligned}
+  (\mathbf{x}_1,y_1), \cdots , (\mathbf{x}_n,y_n).
+\end{aligned}
+$$
+
+1. asdasdas 
+
+
+
+## 3.2.2 Models
+
+
+---
+
+- train data, test data, validation data.
+- all data run 過一次 稱為一個 epoch.
+
+
+
+# Ch3. Linear Neural Networks for Regression
+
+
+:::: {.columns}
+::: {.column}
+
+- 3.1. Linear Regression
+  - Linear Regression 的簡介
+    - Loss function
+    - Minibatch Stochastic Gradient Descent 
+
+- 3.2. Object-Oriented Design for Implementation
+  - Utilities, Models, Data, Training
+
+- 3.3. Synthetic Regression Data
+
+:::
+
+::: {.column}
+
+```{python}
+for i in range(2):
+    print(12)
+```
+
+
+:::
+::::
