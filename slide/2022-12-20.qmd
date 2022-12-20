@@ -1,9 +1,11 @@
 ---
-title: "Title TODO:"
+title: "2022-12-20"
 author: "ChoCho"
 date: last-modified
 date-format: iso
 bibliography: ../references.bib
+# knitr: true
+# jupyter: python3
 format:
   revealjs:
     # theme: beige
@@ -26,108 +28,747 @@ format:
     # logo: cover.jpg
 ---
 
+# Content
 
-
-# TOTO
-
-1. train data ? 
-1. SOP of train 
+- Recall 12/13
 
 
 # Recall 12/13
 
-## AAA
+## DL and statistic
 
-column0 | column1 | column2
+| | deep learning | statistic
 ------- | ------- | -------
-$(\mathbf{x}^{(1)},y^{(1)}), \cdots , (\mathbf{x}^{(n)},y^{(n)})$ | data | sample
-| | 建造 model (denote estimators by $\widehat{y}^{(i)}$) | 將 $\mathbf{x}^{(i)},y^{(i)}$ 看成 random elements $\mathbf{X},Y$ 的 realizations
-$\theta$ | parameters (of model) | parameters (of density)
-|| min loss | max likelihood
+$(x^{(1)},y^{(1)}), \cdots , (x^{(n)},y^{(n)})$ | data | sample
+| | 建造 model $\texttt{Net}$ (denote the estimators $\mathtt{Net}(x)$ by $\widehat{y}$) | 將 $x^{(i)},y^{(i)}$ 看成 random elements $X,Y$ 的 realizations
+$\theta$ | parameters (of model) | parameters (of density or mass)
+參數優化 | minimize $\frac{1}{n}\sum_{i=1}^n\ell(y^{(i)},\widehat{y}^{(i)})$ | maximize the likelihood
 
+- $\ell$ is called the **loss function** (預估值與實際值的差距, $\color{red}{\text{待定}}$).
 
+- How to minimize $\frac{1}{n} \sum_{i=1}^n\ell(y^{(i)},\widehat{y}^{(i)})$:  **Gradient Descent**.
+  
+  <small>https://thumbs.gfycat.com/AngryInconsequentialDiplodocus-size_restricted.gif</small> ![](https://thumbs.gfycat.com/AngryInconsequentialDiplodocus-size_restricted.gif)
 
----
+  - Note: 這裡變數是 $\theta.$
 
-### Deep learning (TODO:修改) vs Statistics
-
-- $(\mathbf{x}^{(1)},y^{(1)}), \cdots , (\mathbf{x}^{(n)},y^{(n)})$: data $\iff$ sample.
-<!-- TODO: 補 loss -->
-
-- 建造 model (denote estimators by $\widehat{y}^{(i)}$) $\iff$ 將 $\mathbf{x}^{(i)},y^{(i)}$ 看成 random elements $\mathbf{X},Y$ 的 realizations.
-
-- $\theta$: parameters (of model) $\iff$ parameters (of density).
-
-- min loss $\iff$ max likelihood.
-
-  - How to min loss:  **Gradient Descent**.
-    - <small>https://thumbs.gfycat.com/AngryInconsequentialDiplodocus-size_restricted.gif</small> ![](https://thumbs.gfycat.com/AngryInconsequentialDiplodocus-size_restricted.gif)
-
-  - Gradient Descent:
-    $$
-    \mathbf{x}_{i} \leftarrow \mathbf{x}_{i-1} - \ell \cdot \nabla f(\mathbf{x}_{i-1})
-    $$  
-
-    - $\ell$: learning rate (步長).
-      
-      - Momentum, Adam, $\cdots.$
-    
-    - 最速上升: 往梯度方向走 by 
-    $$
-    D_{v} f(\mathbf{x}) = \nabla f(\mathbf{x})\cdot v
-    $$
-    and Cauchy's inequality.
-
-
-
-## SOP
-
-1. We have data (samples)
-$$
-\begin{aligned}
-  (\mathbf{x}_1,y_1), \cdots , (\mathbf{x}_n,y_n).
-\end{aligned}
-$$
-
-1. asdasdas 
-
-
-
-## 3.2.2 Models
-
-
----
-
-- train data, test data, validation data.
-- all data run 過一次 稱為一個 epoch.
-
-
-
-# Ch3. Linear Neural Networks for Regression
-
+## GD (Gradient Descent)
 
 :::: {.columns}
 ::: {.column}
 
+- Set $f=f(\theta):=\frac{1}{n}\sum_{i=1}^n\ell(y^{(i)},\widehat{y}^{(i)}).$
+
+- $\color{red}{\text{給定}}$任意初始值 $\theta_0.$
+
+- $\theta_{i} \leftarrow \theta_{i-1} - \eta \cdot \nabla f(\theta_{i-1}),\quad i\in \mathbb N.$
+
+  - $\eta$: learning rate (步長).
+  
+    - Momentum, Adam, $\cdots.$
+
+  - 最速上升(反之則最速下降): 往梯度方向走 by 
+  $$
+  D_{v} f(\theta) = \nabla f(\theta)\cdot v
+  $$
+  and Cauchy's inequality.
+
+- 則 $\theta_i,i\in \mathbb N$ 有機會收斂到 local min.
+:::
+
+::: {.column}
+<small>https://thumbs.gfycat.com/AngryInconsequentialDiplodocus-size_restricted.gif</small> ![](https://thumbs.gfycat.com/AngryInconsequentialDiplodocus-size_restricted.gif)
+
+:::
+::::
+ 
+
+## SGD (Stochastic Gradient Descent)
+
+- See [d2l 3.1.1.4. Minibatch Stochastic Gradient Descent](https://d2l.ai/chapter_linear-regression/linear-regression.html#minibatch-stochastic-gradient-descent).
+
+- 原因: 優化的函數 $f=f(\theta):=\frac{1}{n}\sum_{i=1}^n\ell(y^{(i)},\widehat{y}^{(i)})$ 太多項, 計算繁雜.
+  
+  - In practice, this can be extremely slow: we must pass over the entire dataset before making a single update, even if the update steps might be very powerful [@liu1989limited].
+
+- [@bottou2010large]: 每次 GD 只考慮一個 $(x^{(i)},y^{(i)}).$
+  
+  - The resulting algorithm, 
+  stochastic gradient descent (SGD) can be an effective strategy, 
+  even for large datasets.
+
+- **Solution**: 將 $(x^{(i)},y^{(i)}),i=1,\cdots , n$ 弄成好幾個 **minibatch** [@li2014efficient]. 
+  
+  1. 將 $(x^{(1)},y^{(1)}), \cdots , (x^{(n)},y^{(n)})$ 重排, 同樣叫 $(x^{(1)},y^{(1)}), \cdots , (x^{(n)},y^{(n)}).$
+  
+  1. 給定數字 $n_B$ (`batch_size` in code), 通常為 $2$ 的次方且 $32 \leq  n_B \leq 256.$
+
+  1. 將 $\lbrace 1,2,\cdots,n \rbrace$ 分成
+  $$
+  \begin{aligned}
+    \mathcal{B}_1 = &\lbrace 1,2,\cdots, n_B \rbrace,  \cr 
+    \mathcal{B}_2 = &\lbrace n_B+ 1, n_B+ 2,\cdots, 2 n_B \rbrace,  \cr 
+    &\vdots \cr 
+    &  \lbrace \cdots, n \rbrace.
+  \end{aligned}
+  $$
+  
+  1. For $t=1,2\cdots,$
+  $$
+  \begin{aligned}
+    \theta \leftarrow \theta - \frac{\eta}{n_B} \sum_{i\in \mathcal{B}_t} \nabla\ell(\widehat{y}^{(i)},y^{(i)}) .
+  \end{aligned}
+  $$
+  將所有 $t$ 跑完一次, 稱為一個 epoch (`fit_epoch`).
+
+- <small>https://ithelp.ithome.com.tw/m/articles/10202720</small>
+![](https://cdn-images-1.medium.com/max/1000/1*PV-fcUsNlD9EgTIc61h-Ig.png)
+
+---
+
+## 衡量 model 的好壞
+
+- 將 data 分成 train data 跟 validation (test) data.
+
+  - 將 $\lbrace 1,2,\cdots,n \rbrace$ 分成 `index_train` and `index_val`. 也就是
+  $$
+  \begin{aligned}
+    \lbrace 1,2,\cdots,n \rbrace=\lbrace 1,2,\cdots,n_{\mathtt{train}} \rbrace\cup \lbrace n_{\mathtt{train}}+1,\cdots,n \rbrace
+    := \mathtt{Index}_{\mathtt{train}} \cup \mathtt{Index}_{\mathtt{val}}.
+  \end{aligned}
+  $$
+  
+  - 在 $x^{(i)},i\in \mathtt{Index}_{\mathtt{train}}$ 上訓練 model (上一頁的 $n$ 換成 $n_{train}$).
+
+  - 用 $x^{(i)},i\in \mathtt{Index}_{\mathtt{val}}$ 衡量 model 好壞.
+
+
+<!-- 
+
+## Some trivial examples of `Net`
+
+:::: {.columns}
+::: {.column}
+
+- Linear regression: ![](https://d2l.ai/_images/singleneuron.svg){width="100%"}
+
+- Softmax regression ![](https://d2l.ai/_images/softmaxreg.svg){width="100%"}
+
+- MLP ![](https://d2l.ai/_images/mlp.svg){width="100%"}
+
+:::
+
+::: {.column}
+![The real neuron](https://d2l.ai/_images/neuron.svg)
+:::
+::::
+ -->
+
+
+## Outline of chapter 3,4 of d2l
+
+:::: {.columns}
+::: {.column}
+### Ch3. Linear Neural Networks for Regression
 - 3.1. Linear Regression
   - Linear Regression 的簡介
     - Loss function
     - Minibatch Stochastic Gradient Descent 
 
 - 3.2. Object-Oriented Design for Implementation
-  - Utilities, Models, Data, Training
+  - Utilities, Models, Data, Trainer
 
-- 3.3. Synthetic Regression Data
+- - 3.3. Synthetic Regression Data
+
+  - 3.4. Linear Regression Implementation from Scratch
+
+- 3.5. Concise Implementation of Linear Regression
+  - Use API.
+
+- 3.6. Generalization
+  - Overfitting, Model Selection, Cross-Validation.
+
+- 3.7. Weight Decay
+  - Overfitting $\implies$ Regularization
+
+:::
+::: {.column}
+### Ch4. Linear Neural Networks for Classification
+
+- 4.1. Softmax Regression
+
+- 4.2. The Image Classification Dataset
+
+- 4.3. The Base Classification Model
+
+- 4.4. Softmax Regression Implementation from Scratch
+
+- 4.5. Concise Implementation of Softmax Regression
+
+- 4.6. Generalization in Classification
+
+- 4.7. Environment and Distribution Shift
+:::
+::::
+
+# Coding
+
+
+- `d2l` 提供了
+
+  - `ProgressBoard`
+  - `Module`
+  - `DataModule`
+  - `Trainer`
+
+## `ProgressBoard`
+
+```{python}
+import numpy as np
+from d2l import torch as d2l
+board = d2l.ProgressBoard('$x$')
+for x in np.arange(0,10,0.1):
+  board.draw(x,np.sin(x),'$sin x$')
+```
+
+## `Module` 
+
+:::: {.columns}
+::: {.column}
+
+```python
+class Module(nn.Module, d2l.HyperParameters):  #@save
+    def __init__(self, plot_train_per_epoch=2, plot_valid_per_epoch=1):
+        super().__init__()
+        self.save_hyperparameters()
+        self.board = ProgressBoard()
+    def loss(self, y_hat, y):
+        raise NotImplementedError
+
+    def forward(self, X):
+        assert hasattr(self, 'net'), 'Neural network is defined'
+        return self.net(X)
+
+    def plot(self, key, value, train):
+        """Plot a point in animation."""
+        assert hasattr(self, 'trainer'), 'Trainer is not inited'
+        self.board.xlabel = 'epoch'
+        if train:
+            x = self.trainer.train_batch_idx / \
+                self.trainer.num_train_batches
+            n = self.trainer.num_train_batches / \
+                self.plot_train_per_epoch
+        else:
+            x = self.trainer.epoch + 1
+            n = self.trainer.num_val_batches / \
+                self.plot_valid_per_epoch
+        self.board.draw(x, value.to(d2l.cpu()).detach().numpy(),
+                        ('train_' if train else 'val_') + key,
+                        every_n=int(n))
+    def training_step(self, batch):
+        l = self.loss(self(*batch[:-1]), batch[-1])
+        self.plot('loss', l, train=True)
+        return l
+
+    def validation_step(self, batch):
+        l = self.loss(self(*batch[:-1]), batch[-1])
+        self.plot('loss', l, train=False)
+
+    def configure_optimizers(self):
+        raise NotImplementedError
+    
+    def configure_optimizers(self):
+        """Defined in :numref:`sec_classification`"""
+        return torch.optim.SGD(self.parameters(), lr=self.lr)
+
+    def apply_init(self, inputs, init=None):
+        """Defined in :numref:`sec_lazy_init`"""
+        self.forward(*inputs)
+        if init is not None:
+            self.net.apply(init)
+```
+
+- `loss` 要另外給.
 
 :::
 
 ::: {.column}
 
-```{python}
-for i in range(2):
-    print(12)
-```
-
+- `training_step` 跟 `validation_step` 裡的 `batch` 就是 ($x^{(i)},y^{(i)}$ 已經重排過) 
+$$
+\begin{aligned}
+  \begin{bmatrix}  & x^{(1)} &  & y^{(1)} \\  & x^{(2)} &  & y^{(2)} \\ & \vdots & & \vdots \\  &  x^{(n_B)} &   &  y^{(n_B)} \\\end{bmatrix}
+\end{aligned}, \cdots .
+$$
+  - 所以 `batch[-1]` 就是 $\begin{bmatrix} y^{(1)} \\ y^{(2)} \\ \vdots \\ y^{(n_B)} \\\end{bmatrix}, \cdots.$
+  - 這裡 `self(*batch[:-1])` 即為 `self.forward(batch[:-1])`
+    - See [3.2.3. Data](https://d2l.ai/chapter_linear-regression/oo-design.html#data) 的上段文字.
+    - Ex. if `a` is an instance, then `a(X)`=`a.forward(X)`
 
 :::
 ::::
+
+
+## `DataModule`
+
+```python
+class DataModule(d2l.HyperParameters):  #@save
+    def __init__(self, root='../data', num_workers=4):
+        self.save_hyperparameters()
+
+    def get_dataloader(self, train):
+        raise NotImplementedError
+
+    def train_dataloader(self):
+        return self.get_dataloader(train=True)
+
+    def val_dataloader(self):
+        return self.get_dataloader(train=False)
+    def get_tensorloader(self, tensors, train, indices=slice(0, None)):
+        """Defined in :numref:`sec_synthetic-regression-data`"""
+        tensors = tuple(a[indices] for a in tensors)
+        dataset = torch.utils.data.TensorDataset(*tensors)
+        return torch.utils.data.DataLoader(dataset, self.batch_size, shuffle=train)
+```
+
+- `get_dataloader` 待定 (因為不知道資料的 y 是怎儲存).
+
+- `get_dataloader` 要弄成下面這種形式: If `data` is an instance of `DataModule`, then 
+  - `data.get_dataloader(train)` return `torch.utils.data.DataLoader( (X,y) , self.batch_size, shuffle=train)`.
+
+- `get_dataloader` and `get_tensorloader` 
+  - If `train==T`, then we load the train data.
+  - If `train==F`, then we load the validation (test) data.
+
+
+## `Trainer`
+
+```python
+class Trainer(d2l.HyperParameters):
+    """Defined in :numref:`subsec_oo-design-models`"""
+    def __init__(self, max_epochs, num_gpus=0, gradient_clip_val=0):
+        self.save_hyperparameters()
+        assert num_gpus == 0, 'No GPU support yet'
+
+    def prepare_data(self, data):
+        self.train_dataloader = data.train_dataloader()
+        self.val_dataloader = data.val_dataloader()
+        self.num_train_batches = len(self.train_dataloader)
+        self.num_val_batches = (len(self.val_dataloader)
+                                if self.val_dataloader is not None else 0)
+
+    def prepare_model(self, model):
+        model.trainer = self
+        model.board.xlim = [0, self.max_epochs]
+        self.model = model
+
+    def fit(self, model, data):
+        self.prepare_data(data)
+        self.prepare_model(model)
+        self.optim = model.configure_optimizers()
+        self.epoch = 0
+        self.train_batch_idx = 0
+        self.val_batch_idx = 0
+        for self.epoch in range(self.max_epochs):
+            self.fit_epoch()
+
+    def fit_epoch(self):
+        raise NotImplementedError
+
+    def prepare_batch(self, batch):
+        """Defined in :numref:`sec_linear_scratch`"""
+        return batch
+
+    def fit_epoch(self):
+        """Defined in :numref:`sec_linear_scratch`"""
+        self.model.train()
+        for batch in self.train_dataloader:
+            loss = self.model.training_step(self.prepare_batch(batch))
+            self.optim.zero_grad()
+            with torch.no_grad():
+                loss.backward()
+                if self.gradient_clip_val > 0:  # To be discussed later
+                    self.clip_gradients(self.gradient_clip_val, self.model)
+                self.optim.step()
+            self.train_batch_idx += 1
+        if self.val_dataloader is None:
+            return
+        self.model.eval()
+        for batch in self.val_dataloader:
+            with torch.no_grad():
+                self.model.validation_step(self.prepare_batch(batch))
+            self.val_batch_idx += 1
+
+    def __init__(self, max_epochs, num_gpus=0, gradient_clip_val=0):
+        """Defined in :numref:`sec_use_gpu`"""
+        self.save_hyperparameters()
+        self.gpus = [d2l.gpu(i) for i in range(min(num_gpus, d2l.num_gpus()))]
+    
+    def prepare_batch(self, batch):
+        """Defined in :numref:`sec_use_gpu`"""
+        if self.gpus:
+            batch = [d2l.to(a, self.gpus[0]) for a in batch]
+        return batch
+
+    def prepare_model(self, model):
+        """Defined in :numref:`sec_use_gpu`"""
+        model.trainer = self
+        model.board.xlim = [0, self.max_epochs]
+        if self.gpus:
+            model.to(self.gpus[0])
+        self.model = model
+
+    def clip_gradients(self, grad_clip_val, model):
+        """Defined in :numref:`sec_rnn-scratch`"""
+        params = [p for p in model.parameters() if p.requires_grad]
+        norm = torch.sqrt(sum(torch.sum((p.grad ** 2)) for p in params))
+        if norm > grad_clip_val:
+            for param in params:
+                param.grad[:] *= grad_clip_val / norm
+```
+
+- `model`: an instance of `Module`.
+- `data`: an instance of `DataModule`.
+- `fit` = `fit_epoch()` `max_epochs` 次.
+- `prepare_batch` 在用 GPU 時才有更動
+
+<!-- 
+## `SGD`
+
+```python
+class SGD(d2l.HyperParameters):  #@save
+    def __init__(self, params, lr):
+        """Minibatch stochastic gradient descent."""
+        self.save_hyperparameters()
+
+    def step(self):
+        for param in self.params:
+            param -= self.lr * param.grad
+
+    def zero_grad(self):
+        for param in self.params:
+            if param.grad is not None:
+                param.grad.zero_()
+```
+
+- `step()`: 做一次參數更新.
+- `zero_grad`: 將 grad 給歸 $0.$ 
+-->
+
+
+## Concise Implementation of Linear Regression (3.5 en)
+
+:::: {.columns}
+::: {.column}
+
+### Import packages
+```{python}
+import numpy as np
+import torch
+from torch import nn
+from d2l import torch as d2l
+```
+
+
+### 假設有資料 `X` 跟 `y`
+
+```{python}
+w=torch.tensor([2, -3.4])
+b=4.2
+temp = d2l.SyntheticRegressionData(w,b)
+temp.X, temp.y
+```
+
+### 將資料弄成 `data` (an instance of `DataModule`)
+
+<!-- 
+```{python}
+data = torch.utils.data.DataLoader( (temp.X, temp.y) , batch_size=32, shuffle=True, num_workers=4)
+``` 
+-->
+
+```{python}
+len(temp.X), len(temp.y)
+```
+
+```{python}
+class LinearRegressionData(d2l.DataModule):
+    def __init__(self, X, y, num_train, num_val, batch_size=32):
+        super().__init__()
+        self.save_hyperparameters()
+        # n = num_train + num_val
+
+    def get_dataloader(self, train):
+        i = slice(0, self.num_train) if train else slice(self.num_train, None)
+        return self.get_tensorloader((self.X, self.y), train, i)
+
+data = LinearRegressionData(temp.X,temp.y, 1000, 1000)
+data.get_dataloader(True).dataset.tensors, data.get_dataloader(False).dataset.tensors
+```
+
+:::
+
+::: {.column}
+
+### 定義 Model
+
+```{python}
+class LinearRegression(d2l.Module):  #@save
+    def __init__(self, lr):
+        super().__init__()
+        self.save_hyperparameters()
+        self.net = nn.LazyLinear(1)
+        self.net.weight.data.normal_(0, 0.01)
+        self.net.bias.data.fill_(0)
+model = LinearRegression(lr=0.03)
+```
+
+- `LazyLinear` 不需輸入 input 的維度.
+- initial $W$ by $\mathcal{N}(0,0.01).$
+
+### 給定 Loss function
+
+```{python}
+@d2l.add_to_class(LinearRegression)  #@save
+def loss(self, y_hat, y):
+    fn = nn.MSELoss()
+    return fn(y_hat, y)
+```
+
+### 給定 Optimization Algorithm (跟預設的相同)
+
+```{python}
+@d2l.add_to_class(LinearRegression)  #@save
+def configure_optimizers(self):
+    return torch.optim.SGD(self.parameters(), self.lr)
+```
+
+### 訓練模型
+
+```{python}
+trainer = d2l.Trainer(max_epochs=3)
+trainer.fit(model, data)
+```
+
+### 確切 $W,b$ 跟 預估的 $W,b.$
+
+```{python}
+print('確切 W,b 為', (w,b))
+print('預估 W,b 為', (model.net.weight.data, model.net.bias.data))
+```
+
+:::
+::::
+
+## `nn.LazyLinear`
+
+```{python}
+%matplotlib inline
+import numpy as np
+import torch
+from torch import nn
+from d2l import torch as d2l
+```
+
+- 正常的 `nn.Linear` 是直接給 weight and bias.
+
+```{python}
+class LinearRegression(d2l.Module):  #@save
+    def __init__(self, lr):
+        super().__init__()
+        self.save_hyperparameters()
+        self.net = nn.Linear(13,1)
+        self.net.weight.data.normal_(0, 0.01)
+        self.net.bias.data.fill_(0)
+A = LinearRegression(lr=0.03)
+A.net.weight.data, A.net.bias.data
+```
+
+- 使用 `LazyLinear` 則無法一開始就給定 weight and bias (因為不知道要輸入幾維度).
+
+```{python}
+class LinearRegression(d2l.Module):  #@save
+    def __init__(self, lr):
+        super().__init__()
+        self.save_hyperparameters()
+        self.net = nn.LazyLinear(1)
+        self.net.weight.data.normal_(0, 0.01)
+        self.net.bias.data.fill_(0)
+A_lazy = LinearRegression(lr=0.03)
+A_lazy.net.weight.data, A_lazy.net.bias.data
+```
+
+- 輸入 data 後, 就會有 weight and bias.
+
+```{python}
+A_lazy.net(torch.tensor([1.0 ,2 ,3 ,4 ,5 ,6]))
+A_lazy.net.weight.data, A_lazy.net.bias.data
+```
+
+
+# Classification
+
+## Question
+
+給定 $q$ 類物品 $C_1,\cdots,C_q.$ 假設有 data $\lbrace x^{(1)}, \cdots , x^{(n)} \rbrace,$
+且每個 $x^{(i)}$ 都屬於某個 $C_{j(i)}.$
+則現在任給 $x,$ 試推出 $x$ 是哪個 $C_j.$
+
+- Ex. Too much.
+
+- **One-hot encoding**: 
+For each $i,$ we define $y^{(i)}=e_j$ if $x\in C_{j},$ where $e_j = [0,0,\cdots, 1 , \cdots , 0]$ (第 $j$ 個是 $1$).
+
+  - Ex. $q=5,$ $x^{(7)}\in C_2.$
+  Then $y^{(7)}=e_2 = [0,1,0,0,0].$
+
+- **Classification**: 判斷 $x$ 屬於哪個 $C_j.$
+但不一定完全準, 很自然變成問 $x$ 屬於各個 $C_j$ 的機率
+(且 data 的 $y^{(i)}$ 剛好符合).
+
+
+
+## Linear Model
+
+- We consider $q=3$ and $x^{(i)}\in \mathbb R^{1\times 4}.$ 
+Then we consider the fully connected layer
+$$
+\begin{aligned}
+  \begin{bmatrix} & o & \\\end{bmatrix}_{1\times 3} 
+  &= \begin{bmatrix} & x &  \\\end{bmatrix}_{1\times 4} \begin{bmatrix}  &  &  \\  & W &  \\  &  &  \\\end{bmatrix}_{4\times 3}+ \begin{bmatrix} & b & \\\end{bmatrix}_{1\times 3} \cr 
+  &= \texttt{Net}(x).
+\end{aligned}
+$$
+
+![](https://d2l.ai/_images/softmaxreg.svg)
+
+- 假設這模型是個好的預測, 
+且 $x^{(1)}\in C_1.$
+  
+  - 理論上 $o^{(1)}:=\texttt{Net}(o^{(1)})$ 應該要接近 $e_1.$
+  
+  - 可想成 $o^{(1)}$ 越大(比起 $o^{(2)}$), 
+  則 $x^{(1)}$ 屬於 $C_1$ 的機率越高.
+  
+  - 但 $o_j$ 無法當成 $x^{(1)}\in C_j$ 的機率
+    
+    - $o_j$ 可能不為正數;
+    
+    - $\sum_{j=1}^q o_j$ 可能不為 $1.$
+  
+  - 會希望有某函數 $s:\mathbb R\mapsto [0,\infty)$ s.t. 
+  $\widehat{y}_j=s(o_j)$ 且滿足
+    
+    - $\sum_{j=1}^q \widehat{y}_j = 1,$
+    
+    - $\widehat{y}_j$ 保持大小.
+      
+      - If $o_1<o_2,$ then $y_1<y_2.$
+
+## Softmax function
+
+Our model becomes
+$$
+\begin{aligned}
+  \widehat{y}_j = \frac{\exp(o_j)}{\sum_{j=1}^q \exp(o_j)}.
+\end{aligned}
+$$
+That is, for example,
+$$
+\begin{aligned}
+  \begin{bmatrix} & \widehat{y} & \\\end{bmatrix}_{1\times 3}
+  &= \sigma \left( \begin{bmatrix} & o & \\\end{bmatrix}_{1\times 3}  \right)
+  = \sigma \left( \begin{bmatrix} & x &  \\\end{bmatrix}_{1\times 4} \begin{bmatrix}  &  &  \\  & W &  \\  &  &  \\\end{bmatrix}_{4\times 3}+ \begin{bmatrix} & b & \\\end{bmatrix}_{1\times 3} \right) \cr 
+  &= \texttt{Net}(x),
+\end{aligned}
+$$
+where $\sigma[o_1,o_2,o_3]=\left( \frac{\exp o_1}{\exp o_1+\exp o_2+\exp o_3} , \frac{\exp o_2}{\exp o_1+\exp o_2+\exp o_3} , \frac{\exp o_3}{\exp o_1+\exp o_2+\exp o_3} \right).$
+  
+  - This $\sigma$ is called the softmax function.
+
+- $2^{o_j}$?
+
+- What is the best loss function of this model?
+
+## Cross-Entropy Loss
+
+- 假設有 data $(x^{(1)},y^{(1)}), \cdots , (x^{(n)},y^{(n)}),$ 其中 $y^{(i)}\in \lbrace e_1,e_2,\cdots e_q \rbrace.$
+
+- 把 $(x^{(1)},y^{(1)}), \cdots , (x^{(n)},y^{(n)})$ 視為 $X,Y$ 的 realization, 且將 $\widehat{y}_j$ 視為 $Y=e_j$ 的機率.
+  
+  - $\mathbf{P}\bigl[ Y=e_j \,\vert\, X=x \bigr]:= \widehat{y}_j.$
+  
+  - 相當於給定 $\mathbf{P}[Y=y \,\vert\, X=x].$
+
+- 以下都考慮 condi. on $X=x$ for some $x.$
+
+  - For $y=[y_1,y_2,\cdots,y_q],$ since $y=e_1,e_2,\cdots,e_q,$
+  $$
+  \begin{aligned}
+    \mathbf{P}[Y=y] 
+    = \mathbf{P}[Y=e_1]^{y_1} \mathbf{P}[Y=e_2]^{y_2} \cdots \mathbf{P} [Y=e_q]^{y_q} 
+    = \prod_{j=1}^q \widehat{y}_j ^{y_j}.
+  \end{aligned}
+  $$
+  
+  - Max. the likelihood $\iff$ Max. $\prod_{i=1}^n\prod_{j=1}^q \big(\widehat{y}_j^{(i)} \big) ^{y_j^{(i)}}.$
+
+  - So we may min. $-\sum_{j=1}^q y_j^{(i)}\log \widehat{y}_j^{(i)}.$
+
+:::: {.columns}
+::: {.column}
+
+- We choose the loss function
+$$
+\begin{aligned}
+  \ell(y,\widehat{y}) = -\sum_{j=1}^q y_j \log \widehat{y}_j.
+\end{aligned}
+$$
+This is called the **Cross-Entropy Loss.**
+
+- 有 $\log$ 的地方一定是放 estimate.
+
+- softmax 具體函數無關, 只需 $\widehat{y}$ 符合機率值.
+
+:::
+
+::: {.column}
+
+- If $y=e_1,$ then $\ell(y,\widehat{y}) = -\log \widehat{y}_1.$
+  
+  ```{python}
+  #| echo: False
+  import numpy as np
+  from matplotlib import pyplot as plt
+
+  # plt.rcParams["figure.figsize"] = [7.50, 3.50]
+  # plt.rcParams["figure.autolayout"] = True
+
+  def f(x):
+    return -np.log(x)
+
+  x = np.linspace(0, 1, 1000)
+
+  plt.plot(x, f(x), color='red')
+
+  plt.show()
+  ```
+
+:::
+::::
+
+- $\exp(o_j)$ may too large or small (4.5.2 en).
+  - Let $o_{\max}=\max_{j}o_j.$ Then
+  $$
+  \begin{aligned}
+    \widehat{y}_j = \frac{\exp o_j}{\sum_j \exp o_j} = \frac{\exp(o_j-o_{\max})}{\sum_{j}\exp(o_j-o_{\max})}. \qquad \left( \frac{0\leq \quad \leq 1}{1\leq \quad \leq q} \right)
+  \end{aligned}
+  $$
+  $$
+  \begin{aligned}
+    \log \widehat{y}_j = o_j - o_{\max} - \log \left( \sum_{j} \exp(o_j - o_{\max}) \right).
+  \end{aligned}
+  $$
+  
+
+# Reference

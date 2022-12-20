@@ -3,16 +3,6 @@
 engine: knitr
 ---
 
-# Preface {.unnumbered}
+# Test
 
-Test. See [@bookdown2016].
-
-
-```{python}
-#| echo: False
-
-from IPython.display import display, Markdown
-import lipsum
-display(Markdown(lipsum.generate_words(160)))
-
-```
+Test @R-knitr.
