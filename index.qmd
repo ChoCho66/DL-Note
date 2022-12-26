@@ -6,3 +6,67 @@ engine: knitr
 # Test
 
 Test @R-knitr.
+
+
+$$
+
+$$
+
+
+const greek  = {
+    "al" : "alpha",
+    "be" : "beta",
+    "chi" : "chi",
+    "del" : "delta",
+    "eps" : "varepsilon",
+    // "ve": "varepsilon",
+    "phi" : "phi",
+    // "vf" : "varphi",
+    "ga" : "gamma",
+    "eta" : "eta",
+    // "i" : "iota",
+    "vphi" : "varphi",
+    "ka" : "kappa",
+    "vka": "varkappa",
+    "lam" : "lambda",
+    "mu" : "mu",
+    "nu" : "nu",
+    "omi" : "omicron",
+    "pi" : "pi",
+    "vpi" : "varpi",
+    "the" : "theta",
+    "vthe" : "vartheta",
+    "rho" : "rho",
+    "sig" : "sigma",
+    "vsig" : "varsigma",
+    "tau" : "tau",
+    // "u" : "upsilon",
+    "ome" : "omega",
+    "xi" : "xi",
+    "psi" : "psi",
+    "ze" : "zeta",
+    "Al" : "Alpha",
+    "Be" : "Beta",
+    "Chi" : "Chi",
+    "Del" : "Delta",
+    // "Eps" : "Epsilon",
+    "Phi" : "Phi",
+    "Ga" : "Gamma",
+    // "Eta" : "Eta",
+    // "I" : "Iota",
+    "Ka" : "Kappa",
+    "Lam" : "Lambda",
+    "Mu" : "Mu",
+    "Nu" : "Nu",
+    "Omi" : "Omicron",
+    "Pi" : "Pi",
+    "The" : "Theta",
+    "Rho" : "Rho",
+    "Sig" : "Sigma",
+    "Tau" : "Tau",
+    // "U" : "Upsilon",
+    "Ome" : "Omega",
+    "Xi" : "Xi",
+    "Psi" : "Psi",
+    "Ze" : "Zeta",
+};

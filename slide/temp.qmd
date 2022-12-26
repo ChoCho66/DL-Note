@@ -1,28 +1,19 @@
-
-
-
-
-`batch_size`
-`max_epochs`
-`lr`
-`num_inputs`
-`num_outputs`
-`y_hat`
-
-## `Model`
-
-`loss` and `forward`
-
-
-
-## 3.2.3 前面
-
-You may notice that `Module` is a subclass of `nn.Module`,
-the base class of neural networks in `PyTorch`.
-It provides convenient features to handle neural networks.
-For example,
-if we define a forward method,
-such as `forward(self,X)`,
-then for an instance a we can invoke this function by `a(X)`.
-This works since it calls the forward method in the built-in `__call__` method.
-You can find more details and examples about `nn.Module` in Section 6.1.
+This is more than just a theoretical nuisance.
+Consider the aforementioned one-hidden-layer MLP with two hidden units.
+For illustration,
+suppose that the output layer transforms the two hidden units into only one output unit.
+Imagine what would happen if we initialized all of the parameters of the hidden layer as W1=c for some constant c.
+In this case,
+during forward propagation either hidden unit takes the same inputs and parameters,
+producing the same activation,
+which is fed to the output unit.
+During backpropagation,
+differentiating the output unit with respect to parameters W1 gives a gradient whose elements all take the same value.
+Thus,
+after gradient-based iteration (e.g.,
+minibatch stochastic gradient descent),
+all the elements of W1 still take the same value.
+Such iterations would never break the symmetry on its own and we might never be able to realize the network’s expressive power.
+The hidden layer would behave as if it had only a single unit.
+Note that while minibatch stochastic gradient descent would not break this symmetry,
+dropout regularization (to be introduced later) would!
