@@ -843,7 +843,7 @@ tensor([[-0.7297,  0.1423, -0.6871, -0.6520,  0.1607],
   \theta_2^* = \arg\min_\theta \big( f(\theta) + \lambda \lVert \theta \rVert \big) := \theta_1^*.
 \end{aligned}
 \]</span></p></li>
-<li><p>Note that <span class="math inline">\(\lvert \nabla f(\theta_2^*) \rvert \nearrow\)</span> and <span class="math inline">\(\nabla \lVert \cdot \rVert \Big\vert_{\theta_2^*} \searrow\)</span> if <span class="math inline">\(t\searrow 0.\)</span> So <span class="math display">\[
+<li><p>Note that <span class="math inline">\(\lvert \nabla f(\theta_2^*) \rvert \nearrow\)</span> and <span class="math inline">\(\left\lvert \nabla \lVert \cdot \rVert \Big\vert_{\theta_2^*} \right\rvert \searrow\)</span> if <span class="math inline">\(t\searrow 0.\)</span> So <span class="math display">\[
 \begin{aligned}
   \lambda = \frac{\lvert \nabla f(\theta_2^*) \rvert}{\left\lvert \nabla \lVert \cdot \rVert \Big\vert_{\theta_2^*} \right\rvert} \nearrow
 \end{aligned}
@@ -864,14 +864,26 @@ tensor([[-0.7297,  0.1423, -0.6871, -0.6520,  0.1607],
 </ul>
 </div><div class="column">
 <ul>
-<li><p><a href="ttps://www.zhihu.com/question/26485586">https://www.zhihu.com/question/26485586</a></p>
+<li><p><a href="https://www.zhihu.com/question/26485586">https://www.zhihu.com/question/26485586</a></p>
 <ul>
 <li><p><img data-src="https://pic1.zhimg.com/v2-ea5454fc80e6c601fdb347caeeba28cc_r.jpg?source=1940ef5c"></p></li>
 <li><p><img data-src="https://pic1.zhimg.com/v2-d88e01e730c8e8d91facbd2b1248bfec_r.jpg?source=1940ef5c"></p></li>
 </ul></li>
+<li><p><a href="https://vimsky.com/article/3852.html">https://vimsky.com/article/3852.html</a></p></li>
 </ul>
 </div>
 </div>
+<ul>
+<li><p><img data-src="https://i1.wp.com/www.alexejgossmann.com/images/penalty_function_contours/p-norm_balls.gif?zoom=2&amp;w=578&amp;ssl=1"></p>
+<ul>
+<li><a href="https://www.r-bloggers.com/2017/03/contours-of-statistical-penalty-functions-as-gif-images-2/">https://www.r-bloggers.com/2017/03/contours-of-statistical-penalty-functions-as-gif-images-2/</a></li>
+</ul></li>
+<li><p><span class="math inline">\(\ell_1\)</span>: Concentrate weights on a small set of features by clearing the other weights to zero.</p>
+<ul>
+<li>An effective method for feature selection.</li>
+</ul></li>
+<li><p><span class="math inline">\(\ell_2\)</span>: Distribute weight evenly across a larger number of features.</p></li>
+</ul>
 <div class="footer footer-default">
 
 </div>
