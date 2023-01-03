@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.1.251">
 
   <meta name="author" content="ChoCho">
-  <meta name="dcterms.date" content="2022-12-20">
+  <meta name="dcterms.date" content="2023-01-03">
   <title>2022-12-20-2</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -397,7 +397,8 @@
 <section id="title-slide" class="center">
   <h1 class="title">2022-12-20-2</h1>
   <p class="author">ChoCho</p>
-  <p class="date">2022-12-20</p>
+  <p class="institute">Last update date</p>
+  <p class="date">2023-01-03</p>
 </section>
 
 <section id="concise-implementation-of-softmax-regression-4.5-en" class="slide level2">
@@ -439,7 +440,8 @@
 <span id="cb2-28"><a href="#cb2-28"></a>            X <span class="op">=</span> layer(X)</span>
 <span id="cb2-29"><a href="#cb2-29"></a>            <span class="bu">print</span>(layer.__class__.<span class="va">__name__</span>, <span class="st">'output shape:</span><span class="ch">\t</span><span class="st">'</span>, X.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><code>loss</code> 是取 cross entropy.</li>
+<li><p><code>loss</code> 是取 cross entropy.</p></li>
+<li><p>See <a href="https://pytorch.org/docs/stable/generated/torch.nn.functional.cross_entropy.html#torch.nn.functional.cross_entropy">https://pytorch.org/docs/stable/generated/torch.nn.functional.cross_entropy.html#torch.nn.functional.cross_entropy</a>.</p></li>
 </ul>
 <div class="cell" data-execution_count="77">
 <div class="cell-output cell-output-display" data-execution_count="77">
@@ -711,20 +713,26 @@
 <span id="cb15-10"><a href="#cb15-10"></a>model <span class="op">=</span> SoftmaxRegression(num_outputs<span class="op">=</span><span class="dv">10</span>, lr<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <h3 id="訓練模型">訓練模型</h3>
-<div class="cell" data-execution_count="62">
+<div class="cell columns column-output-location" data-execution_count="62">
+<div class="column">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>trainer <span class="op">=</span> d2l.Trainer(max_epochs<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb16-2"><a href="#cb16-2"></a>trainer.fit(model,data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
 <div class="cell-output cell-output-display">
 <p><img data-src="2022-12-20-2_files/figure-revealjs/cell-12-output-1.svg"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="66">
+</div>
+<div class="cell columns column-output-location" data-execution_count="66">
+<div class="column">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>data <span class="op">=</span> SoftmaxRegressionData(temp.train, temp.val)</span>
 <span id="cb17-2"><a href="#cb17-2"></a>model <span class="op">=</span> SoftmaxRegression(num_outputs<span class="op">=</span><span class="dv">10</span>, lr<span class="op">=</span><span class="fl">0.1</span>)</span>
 <span id="cb17-3"><a href="#cb17-3"></a>trainer <span class="op">=</span> d2l.Trainer(max_epochs<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb17-4"><a href="#cb17-4"></a>trainer.fit(model,data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
 <div class="cell-output cell-output-display">
 <p><img data-src="2022-12-20-2_files/figure-revealjs/cell-13-output-1.svg"></p>
+</div>
 </div>
 </div>
 <ul>
@@ -759,10 +767,10 @@
 <section id="other-model" class="slide level2">
 <h2>Other Model?</h2>
 <ul>
-<li>Stone–Weierstrass Theorem.
+<li><p>Stone–Weierstrass Theorem.</p>
 <ul>
-<li>See <a href="https://playground.tensorflow.org/#activation=linear&amp;batchSize=10&amp;dataset=gauss&amp;regDataset=reg-plane&amp;learningRate=0.03&amp;regularizationRate=0&amp;noise=0&amp;networkShape=1&amp;seed=0.39622&amp;showTestData=false&amp;discretize=false&amp;percTrainData=50&amp;x=true&amp;y=true&amp;xTimesY=false&amp;xSquared=false&amp;ySquared=false&amp;cosX=false&amp;sinX=false&amp;cosY=false&amp;sinY=false&amp;collectStats=false&amp;problem=classification&amp;initZero=false&amp;hideText=false">Here</a></li>
-<li>微分可能不好算.</li>
+<li><p>微分可能不好算.</p></li>
+<li><p>See <a href="https://playground.tensorflow.org/#activation=linear&amp;batchSize=10&amp;dataset=gauss&amp;regDataset=reg-plane&amp;learningRate=0.03&amp;regularizationRate=0&amp;noise=0&amp;networkShape=1&amp;seed=0.39622&amp;showTestData=false&amp;discretize=false&amp;percTrainData=50&amp;x=true&amp;y=true&amp;xTimesY=false&amp;xSquared=false&amp;ySquared=false&amp;cosX=false&amp;sinX=false&amp;cosY=false&amp;sinY=false&amp;collectStats=false&amp;problem=classification&amp;initZero=false&amp;hideText=false">Here</a></p></li>
 </ul></li>
 </ul>
 <div class="cell" data-execution_count="82">
@@ -783,11 +791,15 @@
 \end{aligned}
 \]</span></p></li>
 <li><p>Use other <span class="math inline">\(\sigma\)</span> (this is called the activity function).</p></li>
+<li><p><a href="https://speech.ee.ntu.edu.tw/~hylee/ml/2022-spring.php">https://speech.ee.ntu.edu.tw/~hylee/ml/2022-spring.php</a></p>
+<ul>
+<li><a href="https://speech.ee.ntu.edu.tw/~hylee/ml/ml2022-course-data/whydeep%20(v4).pdf">https://speech.ee.ntu.edu.tw/~hylee/ml/ml2022-course-data/whydeep%20(v4).pdf</a> p4-p6</li>
+</ul></li>
 </ul>
-<div class="cell" data-execution_count="91">
-<div class="cell-output cell-output-display" data-execution_count="91">
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
 
-        <iframe width="1800" height="1000" src="regression (v16).pdf" frameborder="0" allowfullscreen=""></iframe>
+        <iframe width="1600" height="1000" src="sigmoid.pdf" frameborder="0" allowfullscreen=""></iframe>
         
 </div>
 </div>
@@ -859,7 +871,7 @@
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',

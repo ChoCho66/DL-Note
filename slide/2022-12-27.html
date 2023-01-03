@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.1.251">
 
   <meta name="author" content="ChoCho">
-  <meta name="dcterms.date" content="2022-12-26">
+  <meta name="dcterms.date" content="2023-01-03">
   <title>2022-12-27</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -29,6 +29,70 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="2022-12-27_files/libs/revealjs/dist/theme/quarto.css" id="theme">
   <link href="2022-12-27_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -322,6 +386,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -330,84 +397,485 @@
 <section id="title-slide" class="center">
   <h1 class="title">2022-12-27</h1>
   <p class="author">ChoCho</p>
-  <p class="date">2022-12-26</p>
+  <p class="institute">Last update date</p>
+  <p class="date">2023-01-03</p>
 </section>
 
 <section id="recall-2022-12-20" class="slide level2">
 <h2>Recall 2022-12-20</h2>
 <ul>
-<li><p>Date <span class="math inline">\((x^{(1)},y^{(1)}), \cdots , (x^{(n)},y^{(n)})\)</span> 是從 <span class="math inline">\(y=f_{\mathtt{real}}(x)\)</span> sample 出來的 (加上一些擾動).</p></li>
+<li><p>Date <span class="math inline">\((x^{(1)},y^{(1)}), \cdots , (x^{(n)},y^{(n)})\)</span> 是從 <span class="math inline">\(y=f_{\mathtt{real}}(x)\)</span> (不是 loss surface) 加上一些擾動 sample 出來的.</p></li>
 <li><p><span class="math inline">\(f_{\mathtt{real}}\)</span> 一般會是連續函數.</p>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Stone–Weierstrass_theorem">Stone–Weierstrass theorem</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Stone–Weierstrass_theorem">Stone–Weierstrass theorem</a> (但不好計算 gradient).</li>
 </ul></li>
 <li><p>要估計 <span class="math inline">\(f_{\mathtt{real}}\)</span>:</p>
 <ul>
-<li>去生成 <span class="math inline">\(f\)</span> s.t. <span class="math inline">\(f\approx f_{\mathtt{real}}.\)</span></li>
-<li>用 <span class="math inline">\(\widehat{y}=\mathtt{Net}(x):=f(x)\)</span> 作為估計值.</li>
-<li><span class="math inline">\(\mathtt{Net}=\mathtt{Net}(\theta)\)</span>: <span class="math inline">\(\theta\)</span> 為變量.</li>
-<li>Linear model 大多時無用.</li>
-<li>Let <span class="math inline">\(\widehat{y}^{(i)}=\mathtt{Net}(x^{(i)}).\)</span></li>
-<li>去 min <span class="math inline">\(\frac{1}{n}\sum_{i=1}^n \ell(y^{(i)},\widehat{y}^{(i)}),\)</span> where <span class="math inline">\(\ell\)</span> is some loss function.</li>
-</ul></li>
-<li><p>理紅意老師講義</p></li>
-<li><p>得到 DNN 的架構</p>
+<li><p>去生成 <span class="math inline">\(f\)</span> s.t. <span class="math inline">\(f\approx f_{\mathtt{real}}.\)</span></p></li>
+<li><p>用 <span class="math inline">\(\widehat{y}=\mathtt{Net}(x):=f(x)\)</span> 作為估計值.</p></li>
+<li><p><span class="math inline">\(\mathtt{Net}=\mathtt{Net}(\theta),\)</span> <span class="math inline">\(\theta\)</span> 為變量.</p></li>
+<li><p>Linear model 大多時無用.</p></li>
+<li><p>Let <span class="math inline">\(\widehat{y}^{(i)}=\mathtt{Net}(x^{(i)}).\)</span> We minimize <span class="math inline">\(L(\theta)=\frac{1}{n}\sum_{i\in B_t} \ell(y^{(i)},\widehat{y}^{(i)})\)</span> for each <span class="math inline">\(t,\)</span> where <span class="math inline">\(\ell\)</span> is some loss function.</p>
 <ul>
-<li>宇宙定理 5.1.1.4. en</li>
+<li>需要 <span class="math inline">\(\nabla L.\)</span></li>
+</ul></li>
+<li><p>Linear function 很好計算 gradient, 但只靠 Linear function 生成的 <span class="math inline">\(\mathtt{Net}\)</span> 無法逼近任意連續函數.</p></li>
 </ul></li>
 </ul>
 </section>
-<section id="outline-of-2022-12-27" class="slide level2">
-<h2>Outline of 2022-12-27</h2>
+<section>
+<section id="multilayer-perceptrons-mlp-ch5-en" class="title-slide slide level1 center">
+<h1>Multilayer Perceptrons (MLP) (ch5 en)</h1>
 <ul>
-<li></li>
-<li>為什麼 DNN 結構長這樣：微分好算
+<li><p>Activation functions (5.1.2 en)</p></li>
+<li><p>Universal Approximators (5.1.1.4 en)</p></li>
+<li><p>Forward Propagation, Backward Propagation (5.3 en)</p></li>
+<li><p>API (5.2.2 en)</p></li>
+</ul>
+</section>
+<section id="multilayer-perceptrons-mlp-ch5-en-1" class="slide level2">
+<h2>Multilayer Perceptrons (MLP) (ch5 en)</h2>
 <ul>
-<li>5.3 Forward Propagation, Backward Propagation (en)</li>
-<li>很好用電腦表示(可用矩陣表示)</li>
+<li><p>像在 softmax regression 一樣, 在 linear 後接一個非 linear function <span class="math inline">\(\sigma.\)</span></p></li>
+<li><p>希望模仿神經學的神經傳導.</p>
+<ul>
+<li><p><a href="https://towardsai.net/p/machine-learning/introduction-to-neural-networks-and-their-key-elements-part-c-activation-functions-layers-ea8c915a9d9">https://towardsai.net/p/machine-learning/introduction-to-neural-networks-and-their-key-elements-part-c-activation-functions-layers-ea8c915a9d9</a></p></li>
+<li><p><img data-src="https://cdn-images-1.medium.com/max/550/1*pO5X2c28F1ysJhwnmPsy3Q.gif"></p></li>
+<li><p>Activation functions (5.1.2 en)</p></li>
 </ul></li>
-<li>宇宙定理
+</ul>
+</section>
+<section id="activation-functions-5.1.2-en" class="slide level2">
+<h2>Activation functions (5.1.2 en)</h2>
 <ul>
-<li>所以 DNN 只要參數足夠, 幾乎都會 Overfitting.</li>
+<li><p>Sigmoid Function: <span class="math display">\[\mathtt{sigmoid}(x) = \dfrac{1}{1+\exp(-x)}.\]</span></p></li>
+<li><p>Linear model 加上 sigmoid <span class="math inline">\(\approx f_{\mathtt{real}}\)</span>?</p>
+<ul>
+<li>Universal Approximators (5.1.1.4 en)</li>
+</ul></li>
+</ul>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> torch <span class="im">import</span> nn</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> d2l <span class="im">import</span> torch <span class="im">as</span> d2l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> torch.arange(<span class="op">-</span><span class="fl">8.0</span>, <span class="fl">8.0</span>, <span class="fl">0.1</span>, requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>y <span class="op">=</span> torch.sigmoid(x)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>d2l.plot(x.detach(), y.detach(), <span class="st">'x'</span>, <span class="st">'sigmoid(x)'</span>, figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="fl">2.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="2022-12-27_files/figure-revealjs/cell-3-output-1.svg" class="r-stretch"></section>
+<section id="universal-approximators-5.1.1.4-en" class="slide level2">
+<h2>Universal Approximators (5.1.1.4 en)</h2>
+<ul>
+<li><a href="https://speech.ee.ntu.edu.tw/~hylee/ml/2022-spring.php">https://speech.ee.ntu.edu.tw/~hylee/ml/2022-spring.php</a>
+<ul>
+<li><a href="https://speech.ee.ntu.edu.tw/~hylee/ml/ml2022-course-data/whydeep%20(v4).pdf">https://speech.ee.ntu.edu.tw/~hylee/ml/ml2022-course-data/whydeep%20(v4).pdf</a> p4-p6</li>
+</ul></li>
+</ul>
+<div class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="9">
+
+        <iframe width="1400" height="650" src="sigmoid.pdf" frameborder="0" allowfullscreen=""></iframe>
+        
+</div>
+</div>
+</section>
+<section id="mlp" class="slide level2">
+<h2>MLP</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><p><img data-src="catanddogDNN.gif"></p>
+<ul>
+<li><a href="https://medium.com/@tiago.tmleite/neural-networks-multilayer-perceptron-and-the-backpropagation-algorithm-a5cd5b904fde">https://medium.com/@tiago.tmleite/neural-networks-multilayer-perceptron-and-the-backpropagation-algorithm-a5cd5b904fde</a></li>
+</ul></li>
+<li><p>MLP 的 <span class="math inline">\(L(\theta)=\frac{1}{n}\sum_{i\in B_t} \ell(y^{(i)},\widehat{y}^{(i)}),\)</span> 很好去計算 gradient.</p>
+<ul>
+<li>Forward Propagation, Backward Propagation (5.3 en).</li>
+</ul></li>
+</ul>
+</div><div class="column">
+<p><img data-src="images/2022-12-27/2022-12-27-07-27-29.png" style="width:50.0%"></p>
+</div>
+</div>
+</section>
+<section id="forward-propagation-backward-propagation-5.3-en" class="slide level2">
+<h2>Forward Propagation, Backward Propagation (5.3 en)</h2>
+<ul>
+<li>Goal: 將要計算的 gradient 寫成矩陣運算.</li>
+</ul>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<div class="columns">
+<div class="column">
+<p><img data-src="images/2022-12-27/2022-12-27-07-47-19.png"></p>
+</div><div class="column">
+<p><img data-src="images/2022-12-27/2022-12-27-07-48-20.png"></p>
+</div>
+</div>
+</section>
+<section id="用-api-弄-nn-5.2.2-en" class="slide level2">
+<h2>用 API 弄 NN (5.2.2 en)</h2>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> torch</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> torch <span class="im">import</span> nn</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="im">from</span> d2l <span class="im">import</span> torch <span class="im">as</span> d2l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<h3 id="data"><code>Data</code></h3>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>data <span class="op">=</span> d2l.FashionMNIST(batch_size<span class="op">=</span><span class="dv">256</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<h3 id="model"><code>Model</code></h3>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">class</span> MLP(d2l.Classifier):</span>
+<span id="cb5-2"><a href="#cb5-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, num_outputs, num_hiddens, lr):</span>
+<span id="cb5-3"><a href="#cb5-3"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb5-4"><a href="#cb5-4"></a>        <span class="va">self</span>.save_hyperparameters()</span>
+<span id="cb5-5"><a href="#cb5-5"></a>        <span class="va">self</span>.net <span class="op">=</span> nn.Sequential(nn.Flatten(), </span>
+<span id="cb5-6"><a href="#cb5-6"></a>                                 nn.LazyLinear(num_hiddens),</span>
+<span id="cb5-7"><a href="#cb5-7"></a>                                 nn.ReLU(), </span>
+<span id="cb5-8"><a href="#cb5-8"></a>                                 nn.LazyLinear(num_outputs))</span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a>model <span class="op">=</span> MLP(num_outputs<span class="op">=</span><span class="dv">10</span>, num_hiddens<span class="op">=</span><span class="dv">256</span>, lr<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="trainer"><code>Trainer</code></h3>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>trainer <span class="op">=</span> d2l.Trainer(max_epochs<span class="op">=</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<h3 id="fit"><code>fit</code></h3>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>trainer.fit(model,data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="2022-12-27_files/figure-revealjs/cell-9-output-1.svg" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="visualizing-net">Visualizing Net</h3>
+<ul>
+<li><a href="https://github.com/ashishpatel26/Tools-to-Design-or-Visualize-Architecture-of-Neural-Network">https://github.com/ashishpatel26/Tools-to-Design-or-Visualize-Architecture-of-Neural-Network</a></li>
+</ul>
+<div class="cell columns column-output-location" data-execution_count="15">
+<div class="column">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">from</span> torchviz <span class="im">import</span> make_dot</span>
+<span id="cb8-2"><a href="#cb8-2"></a>model1 <span class="op">=</span> MLP(num_outputs<span class="op">=</span><span class="dv">10</span>, </span>
+<span id="cb8-3"><a href="#cb8-3"></a>             num_hiddens<span class="op">=</span><span class="dv">256</span>, </span>
+<span id="cb8-4"><a href="#cb8-4"></a>             lr<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb8-5"><a href="#cb8-5"></a>yhat <span class="op">=</span> model1(torch.tensor([[<span class="fl">1.0</span>, <span class="dv">2</span>, <span class="dv">3</span>]]))</span>
+<span id="cb8-6"><a href="#cb8-6"></a>make_dot(yhat, </span>
+<span id="cb8-7"><a href="#cb8-7"></a>         params<span class="op">=</span><span class="bu">dict</span>(<span class="bu">list</span>(model1.named_parameters())),</span>
+<span id="cb8-8"><a href="#cb8-8"></a>         show_attrs<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-display" data-execution_count="15">
+<p><img data-src="2022-12-27_files/figure-revealjs/cell-10-output-1.svg"></p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="numerical-stability-and-initialization-5.4-en" class="title-slide slide level1 center">
+<h1>Numerical Stability and Initialization (5.4 en)</h1>
+<ul>
+<li><p>Vanishing gradient (5.4.1.1 en)</p></li>
+<li><p>Parameter Initialization (5.4.2 en)</p>
+<ul>
+<li><p>Breaking the Symmetry (5.4.1.3 en)</p>
+<ul>
+<li><img data-src="images/2022-12-27/2022-12-26-21-51-30.png" style="width:50.0%"></li>
+</ul></li>
+<li><p>Xavier Initialization (5.4.2.2 en)</p></li>
 </ul></li>
 </ul>
 </section>
-<section id="用-api-弄-nn" class="slide level2">
-<h2>5.2.2 用 API 弄 NN</h2>
-</section>
-<section id="en-overfitting-那些" class="slide level2">
-<h2>3.6 en overfitting 那些</h2>
-</section>
-<section id="en-regularization" class="slide level2">
-<h2>3.7 en Regularization</h2>
+<section id="vanishing-gradient-5.4.1.1-en" class="slide level2">
+<h2>Vanishing gradient (5.4.1.1 en)</h2>
+<div class="columns">
+<div class="column">
 <ul>
-<li>5.6 Dropout en</li>
-<li>https://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2017/Lecture/DNN%20tip.pdf</li>
-<li>銀行人員？</li>
-<li>破壞細胞？</li>
+<li><p>ReLU Function: <span class="math display">\[\mathtt{ReLU}(x) = \max \lbrace x,0 \rbrace.\]</span></p></li>
+<li><p><a href="https://speech.ee.ntu.edu.tw/~hylee/ml/2022-spring.php">https://speech.ee.ntu.edu.tw/~hylee/ml/2022-spring.php</a></p>
+<ul>
+<li><a href="https://speech.ee.ntu.edu.tw/~hylee/ml/ml2022-course-data/whydeep%20(v4).pdf">https://speech.ee.ntu.edu.tw/~hylee/ml/ml2022-course-data/whydeep%20(v4).pdf</a> p7</li>
+</ul></li>
+</ul>
+</div><div class="column">
+<p><img data-src="images/2022-12-27/2022-12-26-23-01-59.png" style="width:80.0%"></p>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>x <span class="op">=</span> torch.arange(<span class="op">-</span><span class="fl">8.0</span>, <span class="fl">8.0</span>, <span class="fl">0.1</span>, requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>y <span class="op">=</span> torch.relu(x)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>d2l.plot(x.detach(), y.detach(), <span class="st">'x'</span>, <span class="st">'ReLU(x)'</span>, figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="fl">2.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-display">
+<p><img data-src="2022-12-27_files/figure-revealjs/cell-11-output-1.svg"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="xavier-initialization-5.4.2.2-en" class="slide level2">
+<h2>Xavier Initialization (5.4.2.2 en)</h2>
+<div class="columns">
+<div class="column">
+<p><img data-src="images/2022-12-27/2022-12-27-07-52-14.png" style="width:50.0%"></p>
+<ul>
+<li><p><span class="math inline">\(W\)</span> 待定.</p></li>
+<li><p>Let <span class="math inline">\(X,W\)</span> be two independent random elements, where</p>
+<ul>
+<li><p><span class="math inline">\(X\)</span>: mean <span class="math inline">\(0,\)</span> variance <span class="math inline">\(\gamma_X^2,\)</span> (平移資料可得到. 這裡不能假設 <span class="math inline">\(\gamma_X=1,\)</span> 因為還要考慮反向 Net.)</p></li>
+<li><p><span class="math inline">\(\bigl\lbrace W_{i,j} \bigr\rbrace_{i,j}:\)</span> iid with mean <span class="math inline">\(0,\)</span> variance <span class="math inline">\(\sigma^2.\)</span></p></li>
+</ul></li>
+<li><p><span class="math inline">\(H=\mathtt{Net}(X)=XW.\)</span></p>
+<ul>
+<li><span class="math inline">\(\color{blue}{\text{Goal 1}}\)</span>: <span class="math inline">\(\mathtt{Var}(H_j)\)</span> small for each <span class="math inline">\(j.\)</span></li>
+</ul></li>
+</ul>
+</div><div class="column">
+<ul>
+<li><p><span class="math inline">\(\mathbf E[H_j]=\sum_{i=1}^{n_{\mathtt{in}}}\mathbf E[W_{i,j}X_i]=0.\)</span></p></li>
+<li><p><span class="math display">\[
+\begin{aligned}
+\mathtt{Var}(H_j)
+&amp;=\mathbf E[H_j^2]-\mathbf E[H_j]^2=\sum_{i=1}^{n_{\mathtt{in}}}\mathbf E[W_{i,j}^2 X_i^2] \cr
+  &amp;=n_{\mathtt{in}}\sigma^2 \gamma_X^2.
+\end{aligned}
+\]</span></p></li>
+<li><p>So we want <span class="math inline">\(n_{\mathtt{in}}\sigma^2\gamma_X^2\)</span> small.</p></li>
+<li><p>Conversely, given <span class="math inline">\(H,\)</span> we have <span class="math inline">\(X=\widetilde{\mathtt{Net}}(H).\)</span></p>
+<ul>
+<li><span class="math inline">\(\color{blue}{\text{Goal 2}}\)</span>: <span class="math inline">\(\mathtt{Var}(X_j)\)</span> small for each <span class="math inline">\(j.\)</span></li>
+</ul></li>
+<li><p>We want <span class="math inline">\(n_{\mathtt{out}}\sigma^2\gamma_H^2\)</span> small.</p></li>
+<li><p>We choose <span class="math inline">\(\sigma^2\)</span> s.t. <span class="math inline">\(\bigl( \frac{n_{\mathtt{in}}+n_{\mathtt{out}}}{2} \bigr)\sigma^2 = 1.\)</span></p></li>
+</ul>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>w <span class="op">=</span> torch.empty(<span class="dv">3</span>, <span class="dv">5</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="bu">print</span>(w)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="bu">print</span>(nn.init.xavier_uniform_(w))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor([[0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0.]])
+tensor([[-0.7297,  0.1423, -0.6871, -0.6520,  0.1607],
+        [ 0.7169, -0.4961, -0.8605, -0.5396,  0.8132],
+        [-0.7804, -0.2611, -0.2891,  0.7202, -0.4338]])</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="overfitting-3.6.2-en" class="slide level2">
+<h2>Overfitting (3.6.2 en)</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><p>MLP 只要參數足夠多, 一定能逼近 <span class="math inline">\(f_{\mathtt{real}}.\)</span></p>
+<ul>
+<li><p>幾乎都會造成 overfitting.</p></li>
+<li><p>不必要的曲折太多.</p></li>
+</ul></li>
+<li><p><img data-src="https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F5308433%2Faabe419f488880ac8e74143d589daada%2Fmlconcepts_image5-rnehsa.png?generation=1606574545155377&amp;alt=media"></p>
+<ul>
+<li><a href="https://www.kaggle.com/general/200076">https://www.kaggle.com/general/200076</a></li>
+</ul></li>
+</ul>
+</div><div class="column">
+<h3 id="解決方式">解決方式:</h3>
+<ul>
+<li><p>K-Fold Cross-Validation</p>
+<ul>
+<li><img data-src="images/2022-12-27/2022-12-27-07-09-21.png">
+<ul>
+<li><a href="https://ithelp.ithome.com.tw/articles/10279240">https://ithelp.ithome.com.tw/articles/10279240</a></li>
+</ul></li>
+</ul></li>
+<li><p>Dropout (5.6 en)</p>
+<ul>
+<li>跟 K-Fold Cross-Validation 一樣是取平均概念.</li>
+</ul></li>
+<li><p>Regularization (3.7 en, 4.4.4 zh)</p>
+<ul>
+<li>限制優化的範圍.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="dropout-5.6-en" class="slide level2">
+<h2>Dropout (5.6 en)</h2>
+<ul>
+<li><p>Overfitting 的原因來自 <span class="math inline">\(\mathtt{Net}(x)\)</span> 太過曲折.</p>
+<ul>
+<li>太多 activation functions 都起作用.</li>
+</ul></li>
+<li><p>解決方式: 在訓練時, 每代入任意 <span class="math inline">\(x,\)</span> 每個 hidden layers 都用 <span class="math inline">\(p\)</span> 機率丟掉.</p>
+<ul>
+<li><img data-src="https://d2l.ai/_images/dropout2.svg"></li>
+</ul></li>
+<li><p>For each hidden layer <span class="math inline">\(h,\)</span> we use the new hidden layer <span class="math inline">\(h'\)</span> by <span class="math display">\[
+\begin{aligned}
+  h' = \frac{1}{1-p} 1_{D_h} h,
+\end{aligned}
+\]</span> where <span class="math inline">\(\lbrace D_h\rbrace_h\)</span> are independent with <span class="math inline">\(\mathbf{P}[D_h]=1-p.\)</span></p>
+<ul>
+<li><span class="math inline">\(\mathbf E[h'] = h.\)</span></li>
+</ul></li>
 </ul>
 </section>
-<section id="梯度消失-以及-w-初始化的問題" class="slide level2">
-<h2>5.4 梯度消失 以及 W 初始化的問題</h2>
-</section>
-<section id="net-api" class="slide level2">
-<h2>5.2.2 Net API</h2>
-<p>Visualize Net</p>
-</section>
-<section id="分布偏移" class="slide level2">
-<h2>4.9.3 分布偏移</h2>
+<section id="dropout-average" class="slide level2">
+<h2>Dropout = average</h2>
+<div class="columns">
+<div class="column">
+<p><img data-src="images/2022-12-27/2022-12-27-09-09-31.png"></p>
 <ul>
-<li><p>https://www.zhihu.com/question/26485586</p></li>
-<li><p>https://roger010620.medium.com/l1-l2-regularization-原理-5beb1b68b955</p></li>
-<li><p>https://hackmd.io/<span class="citation" data-cites="kk6333/BkIDyLikj">(<a href="" role="doc-biblioref" onclick="return false;"><strong>kk6333/BkIDyLikj?</strong></a>)</span></p></li>
-<li><p>https://bobondemon.github.io/2017/11/14/Notes-for-KKT-Conditions/</p></li>
-<li><p>https://stats.stackexchange.com/a/348505</p></li>
-<li><p>https://www.zhihu.com/question/26485586</p></li>
+<li><a href="https://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2017/Lecture/DNN%20tip.pdf">https://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2017/Lecture/DNN%20tip.pdf</a> p47.</li>
 </ul>
+</div><div class="column">
+<p><img data-src="images/2022-12-27/2022-12-27-09-14-21.png"></p>
+</div>
+</div>
+</section>
+<section id="code-for-dropout-5.6.2-5.6.3-en" class="slide level2">
+<h2>Code for dropout (5.6.2, 5.6.3 en)</h2>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">class</span> DropoutMLP(d2l.Classifier):</span>
+<span id="cb12-2"><a href="#cb12-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, num_outputs, num_hiddens_1, num_hiddens_2,</span>
+<span id="cb12-3"><a href="#cb12-3"></a>                 dropout_1, dropout_2, lr):</span>
+<span id="cb12-4"><a href="#cb12-4"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb12-5"><a href="#cb12-5"></a>        <span class="va">self</span>.save_hyperparameters()</span>
+<span id="cb12-6"><a href="#cb12-6"></a>        <span class="va">self</span>.net <span class="op">=</span> nn.Sequential(</span>
+<span id="cb12-7"><a href="#cb12-7"></a>            nn.Flatten(), </span>
+<span id="cb12-8"><a href="#cb12-8"></a>            nn.LazyLinear(num_hiddens_1), </span>
+<span id="cb12-9"><a href="#cb12-9"></a>            nn.ReLU(),</span>
+<span id="cb12-10"><a href="#cb12-10"></a>            nn.Dropout(dropout_1), </span>
+<span id="cb12-11"><a href="#cb12-11"></a>            nn.LazyLinear(num_hiddens_2), </span>
+<span id="cb12-12"><a href="#cb12-12"></a>            nn.ReLU(),</span>
+<span id="cb12-13"><a href="#cb12-13"></a>            nn.Dropout(dropout_2), </span>
+<span id="cb12-14"><a href="#cb12-14"></a>            nn.LazyLinear(num_outputs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell columns column-output-location" data-execution_count="9">
+<div class="column">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>hparams <span class="op">=</span> {<span class="st">'num_outputs'</span>:<span class="dv">10</span>, <span class="st">'num_hiddens_1'</span>:<span class="dv">256</span>, <span class="st">'num_hiddens_2'</span>:<span class="dv">256</span>,</span>
+<span id="cb13-2"><a href="#cb13-2"></a>           <span class="st">'dropout_1'</span>:<span class="fl">0.5</span>, <span class="st">'dropout_2'</span>:<span class="fl">0.5</span>, <span class="st">'lr'</span>:<span class="fl">0.1</span>}</span>
+<span id="cb13-3"><a href="#cb13-3"></a>model <span class="op">=</span> DropoutMLP(<span class="op">**</span>hparams)</span>
+<span id="cb13-4"><a href="#cb13-4"></a>data <span class="op">=</span> d2l.FashionMNIST(batch_size<span class="op">=</span><span class="dv">256</span>)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>trainer <span class="op">=</span> d2l.Trainer(max_epochs<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb13-6"><a href="#cb13-6"></a>trainer.fit(model, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-display">
+<p><img data-src="2022-12-27_files/figure-revealjs/cell-14-output-1.svg"></p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="regularization" class="title-slide slide level1 center">
+<h1>Regularization</h1>
+<ul>
+<li><p>Weight decay (3.7 en, 4.4.4 zh).</p></li>
+<li><p><span class="math inline">\(\ell_1\)</span> regularization vs <span class="math inline">\(\ell_2\)</span> regularization.</p></li>
+</ul>
+</section>
+<section id="regularization-weight-decay-3.7-en-4.4.4-zh" class="slide level2">
+<h2>Regularization (Weight decay) (3.7 en, 4.4.4 zh)</h2>
+<ul>
+<li><p><img data-src="images/2022-12-27/2022-12-27-09-24-21.png" style="width:80.0%"></p></li>
+<li><p><span class="math inline">\(\arg \min_{\theta} L(\theta) \qquad \implies \qquad \arg \min_{\theta} \bigl( L(\theta) + \lambda \left\lVert \theta \right\rVert \bigr)\)</span> for some given <span class="math inline">\(\lambda&gt;0,\)</span> where <span class="math inline">\(\left\lVert \cdot \right\rVert\)</span> is some norm.</p>
+<ul>
+<li><p>限制優化的範圍.</p></li>
+<li><p>某方面等價於: <span class="math inline">\(\qquad\arg \min_{\theta} L(\theta)\)</span> subject to <span class="math inline">\(\lVert \theta\rVert\leq t\)</span> for some <span class="math inline">\(t&gt;0.\)</span></p>
+<ul>
+<li><p><a href="https://stats.stackexchange.com/a/348505">https://stats.stackexchange.com/a/348505</a></p></li>
+<li><p>KKT Conditions</p>
+<ul>
+<li><a href="https://bobondemon.github.io/2017/11/14/Notes-for-KKT-Conditions/">https://bobondemon.github.io/2017/11/14/Notes-for-KKT-Conditions/</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="限制優化的範圍-we-see-ell_2-case" class="slide level2">
+<h2>限制優化的範圍 (We see <span class="math inline">\(\ell_2\)</span> case)</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><p><span class="math inline">\(f=f(\theta)\)</span>: 待優化函數.</p></li>
+<li><p>Let <span class="math inline">\(\theta_2^* = \arg \min_{\theta} f(\theta)\)</span> subject to <span class="math inline">\(\lVert \theta\rVert\leq t\)</span> for some <span class="math inline">\(t&gt;0.\)</span></p></li>
+<li><p>不考慮這種情形</p>
+<ul>
+<li><img data-src="images/2022-12-27/2022-12-27-09-30-02.png" style="width:70.0%"></li>
+</ul></li>
+</ul>
+</div><div class="column">
+
+</div>
+</div>
+</section>
+<section id="限制優化的範圍-we-see-ell_2-case-1" class="slide level2">
+<h2>限制優化的範圍 (We see <span class="math inline">\(\ell_2\)</span> case)</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><p><span class="math inline">\(f=f(\theta)\)</span>: 待優化函數.</p></li>
+<li><p>Let <span class="math inline">\(\theta_2^* = \arg \min_{\theta} f(\theta)\)</span> subject to <span class="math inline">\(\lVert \theta\rVert\leq t\)</span> for some <span class="math inline">\(t&gt;0.\)</span></p></li>
+<li><p>考慮</p>
+<ul>
+<li><img data-src="images/2022-12-27/2022-12-27-09-36-41.png" style="width:70.0%"></li>
+</ul></li>
+</ul>
+</div><div class="column">
+<ul>
+<li><p>Then</p>
+<ul>
+<li><span class="math inline">\(\lVert \theta_2^* \rVert=t,\)</span> and</li>
+<li>there exists some <span class="math inline">\(\lambda&gt;0\)</span> s.t. <span class="math display">\[
+\begin{aligned}
+  \nabla f(\theta_2^*) + \lambda \cdot \nabla \lVert \cdot \rVert \Big\vert_{\theta_2^*} = 0.
+\end{aligned}
+\]</span></li>
+</ul></li>
+<li><p>This implies that <span class="math display">\[
+\begin{aligned}
+  \theta_2^* = \arg\min_\theta \big( f(\theta) + \lambda \lVert \theta \rVert \big) := \theta_1^*.
+\end{aligned}
+\]</span></p></li>
+<li><p>Note that <span class="math inline">\(\lvert \nabla f(\theta_2^*) \rvert \nearrow\)</span> and <span class="math inline">\(\nabla \lVert \cdot \rVert \Big\vert_{\theta_2^*} \searrow\)</span> if <span class="math inline">\(t\searrow 0.\)</span> So <span class="math display">\[
+\begin{aligned}
+  \lambda = \frac{\lvert \nabla f(\theta_2^*) \rvert}{\left\lvert \nabla \lVert \cdot \rVert \Big\vert_{\theta_2^*} \right\rvert} \nearrow
+\end{aligned}
+\]</span> if <span class="math inline">\(t\searrow 0.\)</span></p></li>
+<li><p>In some sense, <span class="math inline">\(\lambda \searrow \iff t \nearrow.\)</span></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="ell_1-regularization-vs-ell_2-regularization" class="slide level2">
+<h2><span class="math inline">\(\ell_1\)</span> regularization vs <span class="math inline">\(\ell_2\)</span> regularization</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><p>ridge regression (<span class="math inline">\(\ell_2\)</span>): <span class="math inline">\(\left\lVert \theta \right\rVert = \big\lVert (\theta_1,\cdots,\theta_n) \big\rVert_2^2= \sum_{i=1}^n \left\lvert \theta_i \right\rvert^2 .\)</span></p></li>
+<li><p>lasso regression (<span class="math inline">\(\ell_1\)</span>): <span class="math inline">\(\left\lVert \theta \right\rVert = \big\lVert (\theta_1,\cdots,\theta_n) \big\rVert_1=\sum_{i=1}^n \bigl\lvert \theta_i \bigr\rvert.\)</span></p></li>
+<li><p><img data-src="images/2022-12-27/2023-01-02-12-02-02.png"></p></li>
+</ul>
+</div><div class="column">
+<ul>
+<li><p><a href="ttps://www.zhihu.com/question/26485586">https://www.zhihu.com/question/26485586</a></p>
+<ul>
+<li><p><img data-src="https://pic1.zhimg.com/v2-ea5454fc80e6c601fdb347caeeba28cc_r.jpg?source=1940ef5c"></p></li>
+<li><p><img data-src="https://pic1.zhimg.com/v2-d88e01e730c8e8d91facbd2b1248bfec_r.jpg?source=1940ef5c"></p></li>
+</ul></li>
+</ul>
+</div>
+</div>
 <div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -462,7 +930,7 @@
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',

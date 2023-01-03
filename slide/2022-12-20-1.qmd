@@ -1,9 +1,11 @@
 ---
 title: "2022-12-20-1"
-author: "ChoCho"
+author: ChoCho
 date: last-modified
 date-format: iso
+institute: Last update date 
 bibliography: ../references.bib
+slide-number: c/t
 # knitr: true
 # jupyter: python3
 format:
@@ -21,11 +23,9 @@ format:
     chalkboard:
       theme: whiteboard
       boardmarker-width: 2
-      src: "Chalkboard.json"
+      src: "Chalkboard.json"  
     scrollable: true
     echo: true
-    # footer: "NCU math"
-    # logo: cover.jpg
 ---
 
 # Content

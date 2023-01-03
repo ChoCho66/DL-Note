@@ -1,0 +1,119 @@
+---
+title: "Title"
+# subtitle: Slides with revealjs
+author: <a href="https://github.com/ChoCho66">ChoCho</a>
+date: last-modified
+date-format: iso
+institute: NCU
+bibliography: ../references.bib
+slide-number: c/t
+# knitr: true
+# jupyter: python3
+
+format:
+  revealjs:
+    # theme: beige
+    # theme: ../custom.scss
+    theme: [serif,custom.scss]    # 像 LaTeX
+    width: 1800
+    height: 1050
+    # transition: fade
+    # preview-links: auto
+    # slide-number: true
+    # slide-tone: true
+    # show-slide-number: print
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 2
+      src: "Chalkboard.json"
+    scrollable: true
+    echo: true
+    # footer: "NCU math"
+    # logo: cover.jpg
+
+# hash-type: number  # Title 跑到左邊
+# reference-location: margin # 在 revealjs 沒用 See https://quarto-dev.github.io/quarto-gallery/page-layout/tufte.html
+
+---
+
+- https://rstudio-conf-2022.github.io/get-started-quarto/materials/05-presentations.html#/fragments
+
+- https://quarto.org/docs/authoring/figures.html#latex-figures Figure
+
+# adasd 
+
+## ssss
+
+`r paste(stringi::stri_rand_lipsum(2, start_lipsum = FALSE), collapse = '\n\n')`
+
+
+## asdad sad 
+
+::: {layout="[[70,30], [100]]"}
+![Surus](attached.png)
+
+![Hanno](attached.png)
+
+![Lin Wang](attached.png)
+:::
+
+
+## test
+
+```{python}
+%matplotlib inline
+import numpy as np
+import torch
+from torch import nn
+
+from ipywidgets import interactive
+import matplotlib.pyplot as plt
+
+W1 = nn.Linear(1,12)
+W1.weight.requires_grad = False
+
+W2 = nn.Linear(6,6)
+W2.weight.requires_grad = False
+
+Wn = nn.Linear(6,1)
+Wn.weight.requires_grad = False
+
+sigR = nn.ReLU()
+sigS = nn.Sigmoid()
+
+Net = nn.Sequential(
+  W1, sigR,
+  nn.Linear(12,6), sigR,
+  W2, sigR,
+  nn.Linear(6,6), sigR,
+  Wn,
+)
+  
+def f(w11=2.0, w21=-1.0, wn1=2.0, b=0.0):  
+  W1.weight[0,0] = torch.tensor([w11])
+  W2.weight[0,0] = torch.tensor([w21])
+  Wn.weight[0,0] = torch.tensor([wn1])
+  
+  plt.figure(2)
+  x = np.linspace(-16, 16, num=1000)
+  y = torch.zeros_like(torch.zeros(len(x)))
+  x_torch = torch.from_numpy(x).to(torch.float32)
+  # np.linspace(-10, 10, num=100000)
+  for j in range(len(x_torch)):
+    y[j] = Net(x_torch[j:j+1])
+  y = y.detach().numpy() + b
+  # print(x[:16])
+  print(y[:16])
+  plt.plot(x, y)
+  plt.ylim(-1, 1)
+  plt.show()
+
+interactive_plot = interactive(f, w11 = (-5.0, 5.0),
+                                  w21 = (-5.0, 5.0),
+                                  wn1 = (-5.0, 5.0),
+                                  b = (-20.0, 20.0)
+                                  )
+output = interactive_plot.children[-1]
+output.layout.height = '500px'
+interactive_plot
+``` 

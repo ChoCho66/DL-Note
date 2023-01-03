@@ -1,0 +1,23 @@
+initialized = {
+  let contentsBounds = document.body.getBoundingClientRect()
+  let width = 800
+  let height = 350
+  let ratio = contentsBounds.width / width
+  width *= ratio
+  height *= ratio
+
+  functionPlot.globals.DEFAULT_WIDTH = width
+  functionPlot.globals.DEFAULT_HEIGHT = height
+  return true
+}
+{
+  let target = DOM.element('div')
+  functionPlot({
+    title: 'y = x²',
+    data: [{
+      fn: 'x^2'
+    }],
+    target
+  });
+  return target
+}

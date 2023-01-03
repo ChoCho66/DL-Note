@@ -1,3 +1,14 @@
-digraph G {
-    a -> b;
+// https://www.cnblogs.com/kekukele/p/13544915.html
+
+digraph g {
+  graph [
+    rankdir = "LR"
+  ];
+  node [
+    fontsize = "16"
+    shape = "box3d"
+  ];
+  a -> b;
+
 }
+
