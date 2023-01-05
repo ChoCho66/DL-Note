@@ -10,6 +10,7 @@ book:
     Test.
   chapters:
     - index.qmd
+    # - slide/2023-01-03.ipynb
     # - slide/2022-12-27.ipynb
     # - Preliminaries.ipynb
     # - summary.qmd

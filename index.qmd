@@ -6,4 +6,3 @@ engine: knitr
 # Test
 
 Test @R-knitr.
-
