@@ -1,9 +1,10 @@
 ---
 title: "2022-12-20-1"
-author: ChoCho
+author: ChoCho<br><br>
 date: last-modified
+# date-modified: last-modified
 date-format: iso
-institute: Last update date 
+institute: MODIFIED
 bibliography: ../references.bib
 slide-number: c/t
 # knitr: true
@@ -27,6 +28,10 @@ format:
     scrollable: true
     echo: true
 ---
+
+## MODIFIED
+
+- 2023-01-09: 修改 `metadata`.
 
 # Content
 
